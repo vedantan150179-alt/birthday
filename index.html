@@ -1416,29 +1416,39 @@ function startCountdown() {
         return new Date(utc + 5.5 * 3600000);
     }
 
-    // Set Ipsita Jii's next birthday in IST (Oct 20 midnight IST as demo)
-    // Change month (0-indexed) and day below for actual birthday
-    function getNextBirthday() {
-        const ist = getIST();
-        let bday = new Date(ist.getFullYear(), 9, 20, 0, 0, 0); // Oct 20 (month 9 = Oct)
-        if (ist >= bday) {
-            bday = new Date(ist.getFullYear() + 1, 9, 20, 0, 0, 0);
+    // Ipsita Jii's birthday: October 20
+    const BDAY_MONTH = 9;  // 0-indexed (9 = October)
+    const BDAY_DAY = 20;
+
+    function isBirthdayToday(ist) {
+        return ist.getMonth() === BDAY_MONTH && ist.getDate() === BDAY_DAY;
+    }
+
+    function getNextBirthday(ist) {
+        // If today is the birthday, return null (celebration mode)
+        if (isBirthdayToday(ist)) return null;
+
+        let bday = new Date(ist.getFullYear(), BDAY_MONTH, BDAY_DAY, 0, 0, 0);
+        if (ist > bday) {
+            bday = new Date(ist.getFullYear() + 1, BDAY_MONTH, BDAY_DAY, 0, 0, 0);
         }
         return bday;
     }
 
-    const birthday = getNextBirthday();
-
     function update() {
         const ist = getIST();
-        const diff = birthday - ist;
-        if (diff <= 0) {
+        const birthday = getNextBirthday(ist);
+
+        // Today is the birthday! 🎉
+        if (birthday === null) {
             document.getElementById('cd-days').textContent = '🎉';
             document.getElementById('cd-hours').textContent = '🎂';
             document.getElementById('cd-mins').textContent = '🥳';
             document.getElementById('cd-secs').textContent = '💖';
             return;
         }
+
+        const diff = birthday - ist;
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
