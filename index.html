@@ -973,6 +973,7 @@
                 <span class="label">Seconds</span>
             </div>
         </div>
+        <p style="margin-top: 12px; font-size: 13px; color: var(--pink-600); font-weight: 600;">🎉 The countdown is complete — Happy Birthday Ipsita Jii! 💖</p>
     </div>
 
     <div class="wish-card" style="text-align:center;">
@@ -1409,57 +1410,11 @@ function toggleMusic() {
 
 // ====== COUNTDOWN ======
 function startCountdown() {
-    // Helper: get current time in IST (UTC+5:30)
-    function getIST() {
-        const now = new Date();
-        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
-        return new Date(utc + 5.5 * 3600000);
-    }
-
-    // Ipsita Jii's birthday: October 20
-    const BDAY_MONTH = 9;  // 0-indexed (9 = October)
-    const BDAY_DAY = 20;
-
-    function isBirthdayToday(ist) {
-        return ist.getMonth() === BDAY_MONTH && ist.getDate() === BDAY_DAY;
-    }
-
-    function getNextBirthday(ist) {
-        // If today is the birthday, return null (celebration mode)
-        if (isBirthdayToday(ist)) return null;
-
-        let bday = new Date(ist.getFullYear(), BDAY_MONTH, BDAY_DAY, 0, 0, 0);
-        if (ist > bday) {
-            bday = new Date(ist.getFullYear() + 1, BDAY_MONTH, BDAY_DAY, 0, 0, 0);
-        }
-        return bday;
-    }
-
-    function update() {
-        const ist = getIST();
-        const birthday = getNextBirthday(ist);
-
-        // Today is the birthday! 🎉
-        if (birthday === null) {
-            document.getElementById('cd-days').textContent = '🎉';
-            document.getElementById('cd-hours').textContent = '🎂';
-            document.getElementById('cd-mins').textContent = '🥳';
-            document.getElementById('cd-secs').textContent = '💖';
-            return;
-        }
-
-        const diff = birthday - ist;
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const secs = Math.floor((diff % (1000 * 60)) / 1000);
-        document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-        document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
-        document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
-    }
-    update();
-    setInterval(update, 1000);
+    // Birthday is today! Countdown is zero and fixed
+    document.getElementById('cd-days').textContent = '00';
+    document.getElementById('cd-hours').textContent = '00';
+    document.getElementById('cd-mins').textContent = '00';
+    document.getElementById('cd-secs').textContent = '00';
 }
 
 // ====== BIRTHDAY FACTS ======
