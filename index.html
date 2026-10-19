@@ -1399,14 +1399,166 @@ function launchConfetti() {
     setTimeout(() => container.innerHTML = '', 6000);
 }
 
-// ====== MUSIC ======
-function toggleMusic() {
-    const btn = document.getElementById('musicToggle');
-    isMusicPlaying = !isMusicPlaying;
-    btn.classList.toggle('playing', isMusicPlaying);
-    btn.textContent = isMusicPlaying ? '🎶' : '🎵';
-    showToast(isMusicPlaying ? '🎶 Music On!' : '🔇 Music Off');
+// ====== SWEET BACKGROUND MUSIC (Kalimba / Music Box Synth) ======
+let audioCtx = null;
+let musicInterval = null;
+let musicTimeoutIds = [];
+let isMusicPlaying = false;
+
+const NOTES = {
+    G3: 196.00, A3: 220.00, B3: 246.94,
+    C4: 261.63, D4: 293.66, E4: 329.63, F4: 349.23, G4: 392.00, A4: 440.00, B4: 493.88,
+    C5: 523.25, D5: 587.33, E5: 659.25, F5: 698.46, G5: 783.99, A5: 880.00, B5: 987.77, C6: 1046.50
+};
+
+// Birthday melody score: { note, bass, beat, dur }
+const bdayMelody = [
+    // Phrase 1: Happy Birthday to you
+    { note: 'G4', bass: 'C4', beat: 0, dur: 0.7 },
+    { note: 'G4', beat: 0.75, dur: 0.3 },
+    { note: 'A4', beat: 1.1, dur: 0.8 },
+    { note: 'G4', beat: 2.0, dur: 0.8 },
+    { note: 'C5', bass: 'E4', beat: 2.9, dur: 0.9 },
+    { note: 'B4', beat: 3.9, dur: 1.6 },
+
+    // Phrase 2: Happy Birthday to you
+    { note: 'G4', bass: 'G3', beat: 5.8, dur: 0.7 },
+    { note: 'G4', beat: 6.55, dur: 0.3 },
+    { note: 'A4', beat: 6.9, dur: 0.8 },
+    { note: 'G4', beat: 7.8, dur: 0.8 },
+    { note: 'D5', bass: 'F4', beat: 8.7, dur: 0.9 },
+    { note: 'C5', beat: 9.7, dur: 1.6 },
+
+    // Phrase 3: Happy Birthday Dear Ipsita Jii
+    { note: 'G4', bass: 'C4', beat: 11.6, dur: 0.7 },
+    { note: 'G4', beat: 12.35, dur: 0.3 },
+    { note: 'G5', bass: 'E4', beat: 12.7, dur: 0.9 },
+    { note: 'E5', beat: 13.7, dur: 0.9 },
+    { note: 'C5', bass: 'A3', beat: 14.7, dur: 0.9 },
+    { note: 'B4', beat: 15.7, dur: 0.9 },
+    { note: 'A4', bass: 'F4', beat: 16.7, dur: 1.8 },
+
+    // Phrase 4: Happy Birthday to you
+    { note: 'F5', bass: 'F4', beat: 18.8, dur: 0.7 },
+    { note: 'F5', beat: 19.55, dur: 0.3 },
+    { note: 'E5', bass: 'C4', beat: 19.9, dur: 0.9 },
+    { note: 'C5', beat: 20.9, dur: 0.9 },
+    { note: 'D5', bass: 'G4', beat: 21.9, dur: 0.9 },
+    { note: 'C5', bass: 'C4', beat: 22.9, dur: 2.2 }
+];
+
+const BEAT_DURATION = 0.58; // seconds per beat (~103 BPM, gentle and sweet)
+const LOOP_DURATION = 26.5 * BEAT_DURATION * 1000;
+
+function initAudio() {
+    if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContextClass();
+    }
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
 }
+
+// Play gentle kalimba chime
+function playTone(freq, time, duration = 1.0, volume = 0.22) {
+    if (!audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    
+    // Soft bell tone using sine
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, time);
+
+    // Warm envelope (instant attack, dreamy bell decay)
+    gain.gain.setValueAtTime(0.0001, time);
+    gain.gain.exponentialRampToValueAtTime(volume, time + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start(time);
+    osc.stop(time + duration);
+
+    // Subtle sweet octave overtone
+    const overtone = audioCtx.createOscillator();
+    const overGain = audioCtx.createGain();
+    overtone.type = 'triangle';
+    overtone.frequency.setValueAtTime(freq * 2, time);
+    overGain.gain.setValueAtTime(0.0001, time);
+    overGain.gain.exponentialRampToValueAtTime(volume * 0.25, time + 0.015);
+    overGain.gain.exponentialRampToValueAtTime(0.0001, time + duration * 0.5);
+
+    overtone.connect(overGain);
+    overGain.connect(audioCtx.destination);
+    overtone.start(time);
+    overtone.stop(time + duration * 0.5);
+}
+
+function scheduleMelody() {
+    if (!isMusicPlaying || !audioCtx) return;
+    const now = audioCtx.currentTime;
+
+    bdayMelody.forEach(item => {
+        const noteTime = now + (item.beat * BEAT_DURATION);
+        if (NOTES[item.note]) {
+            playTone(NOTES[item.note], noteTime, item.dur * 1.4, 0.24);
+        }
+        if (item.bass && NOTES[item.bass]) {
+            playTone(NOTES[item.bass], noteTime, item.dur * 2.0, 0.12);
+        }
+    });
+
+    const timeoutId = setTimeout(() => {
+        if (isMusicPlaying) {
+            scheduleMelody();
+        }
+    }, LOOP_DURATION);
+    musicTimeoutIds.push(timeoutId);
+}
+
+function startSweetMusic() {
+    initAudio();
+    isMusicPlaying = true;
+    const btn = document.getElementById('musicToggle');
+    btn.classList.add('playing');
+    btn.textContent = '🎶';
+    scheduleMelody();
+    showToast('🎶 Sweet Birthday Music Playing! 💖');
+}
+
+function stopSweetMusic() {
+    isMusicPlaying = false;
+    const btn = document.getElementById('musicToggle');
+    btn.classList.remove('playing');
+    btn.textContent = '🎵';
+    musicTimeoutIds.forEach(id => clearTimeout(id));
+    musicTimeoutIds = [];
+    showToast('🔇 Music Paused');
+}
+
+function toggleMusic() {
+    if (isMusicPlaying) {
+        stopSweetMusic();
+    } else {
+        startSweetMusic();
+    }
+}
+
+// Auto-start sweet music on first user tap/interaction (mobile friendly)
+let hasUserInteracted = false;
+function handleFirstInteraction() {
+    if (!hasUserInteracted) {
+        hasUserInteracted = true;
+        initAudio();
+        if (!isMusicPlaying) {
+            startSweetMusic();
+        }
+    }
+}
+document.addEventListener('click', handleFirstInteraction, { once: true });
+document.addEventListener('touchstart', handleFirstInteraction, { once: true });
 
 // ====== COUNTDOWN ======
 function startCountdown() {
