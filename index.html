@@ -1,0 +1,1722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#ff69b4">
+    <title>🎂 Happy Birthday Ipsita Jii! 🎂</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap');
+
+        :root {
+            --pink-light: #fff0f5;
+            --pink-100: #ffe4ec;
+            --pink-200: #ffc1d4;
+            --pink-300: #ff9ebb;
+            --pink-400: #ff69b4;
+            --pink-500: #ff1493;
+            --pink-600: #db0a7a;
+            --pink-700: #b80862;
+            --pink-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fdfcfb 100%);
+            --pink-gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --pink-gradient-3: linear-gradient(to right, #ff758c, #ff7eb3);
+            --gold: #ffd700;
+            --gold-dark: #daa520;
+            --shadow-pink: 0 4px 15px rgba(255, 105, 180, 0.3);
+            --shadow-lg: 0 10px 30px rgba(255, 20, 147, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--pink-gradient);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #4a2040;
+        }
+
+        /* ====== FLOATING PARTICLES ====== */
+        .particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            font-size: 20px;
+            animation: floatUp linear infinite;
+            opacity: 0.6;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* ====== NAVIGATION ====== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 8px 0;
+            padding-bottom: max(8px, env(safe-area-inset-bottom));
+            z-index: 1000;
+            border-top: 2px solid var(--pink-200);
+            box-shadow: 0 -4px 20px rgba(255, 105, 180, 0.15);
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            padding: 6px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #999;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .nav-item.active {
+            color: var(--pink-500);
+            background: var(--pink-100);
+        }
+        .nav-item .nav-icon {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+        .nav-item.active .nav-icon {
+            transform: scale(1.15);
+        }
+
+        /* ====== PAGES ====== */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-bottom: 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ====== HOME PAGE ====== */
+        .hero {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--pink-gradient-2);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-pink);
+        }
+        .hero h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 52px;
+            background: var(--pink-gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            text-shadow: none;
+        }
+        .hero .subtitle {
+            font-size: 16px;
+            color: var(--pink-600);
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        /* Cake Animation */
+        .cake-container {
+            font-size: 80px;
+            margin: 20px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Birthday Message Card */
+        .wish-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px 24px;
+            margin: 20px;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--pink-100);
+            position: relative;
+            overflow: hidden;
+        }
+        .wish-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--pink-gradient-3);
+        }
+        .wish-card h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            color: var(--pink-500);
+            margin-bottom: 15px;
+        }
+        .wish-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #6b3a5a;
+            font-weight: 300;
+        }
+        .wish-card .emoji-row {
+            font-size: 30px;
+            margin-top: 15px;
+            letter-spacing: 8px;
+        }
+
+        /* Countdown */
+        .countdown-section {
+            margin: 20px;
+            padding: 24px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+        .countdown-section h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            color: var(--pink-500);
+            margin-bottom: 15px;
+        }
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .countdown-item {
+            background: var(--pink-gradient);
+            border-radius: 16px;
+            padding: 15px 8px;
+            border: 1px solid var(--pink-200);
+        }
+        .countdown-item .number {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--pink-500);
+            display: block;
+        }
+        .countdown-item .label {
+            font-size: 10px;
+            color: var(--pink-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Music Player */
+        .music-float {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 999;
+            background: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-pink);
+            cursor: pointer;
+            font-size: 22px;
+            border: 2px solid var(--pink-200);
+            transition: all 0.3s ease;
+        }
+        .music-float.playing {
+            animation: pulse 1.5s ease-in-out infinite;
+            border-color: var(--pink-400);
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.4); }
+            50% { box-shadow: 0 0 0 12px rgba(255, 105, 180, 0); }
+        }
+
+        /* ====== GALLERY PAGE ====== */
+        .gallery-header {
+            text-align: center;
+            padding: 30px 20px 15px;
+        }
+        .gallery-header h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 40px;
+            color: var(--pink-500);
+        }
+        .gallery-header p {
+            color: var(--pink-600);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 10px 20px;
+        }
+        .photo-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            box-shadow: var(--shadow-pink);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid white;
+        }
+        .photo-card:first-child {
+            grid-column: 1 / -1;
+            aspect-ratio: 16/10;
+        }
+        .photo-card:active {
+            transform: scale(0.97);
+        }
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .photo-card:hover img {
+            transform: scale(1.05);
+        }
+        .photo-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(transparent, rgba(219, 10, 122, 0.7));
+            padding: 40px 15px 15px;
+            color: white;
+        }
+        .photo-overlay span {
+            font-family: 'Dancing Script', cursive;
+            font-size: 18px;
+        }
+        .photo-heart {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .photo-heart.liked {
+            background: var(--pink-500);
+            color: white;
+        }
+
+        /* Photo Customization Tools */
+        .customize-section {
+            margin: 20px;
+            padding: 24px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+        }
+        .customize-section h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 22px;
+            color: var(--pink-500);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .filter-btn {
+            padding: 10px 4px;
+            border: 2px solid var(--pink-200);
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            text-align: center;
+            font-size: 11px;
+            color: var(--pink-600);
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+        .filter-btn.active, .filter-btn:active {
+            background: var(--pink-gradient-2);
+            color: white;
+            border-color: transparent;
+        }
+        .slider-group {
+            margin: 12px 0;
+        }
+        .slider-group label {
+            font-size: 13px;
+            color: var(--pink-600);
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+        .slider-group input[type="range"] {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--pink-200);
+            border-radius: 3px;
+            outline: none;
+        }
+        .slider-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--pink-gradient-2);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(255, 20, 147, 0.4);
+        }
+        .add-photo-btn {
+            width: 100%;
+            padding: 14px;
+            border: 2px dashed var(--pink-300);
+            border-radius: 16px;
+            background: var(--pink-100);
+            color: var(--pink-500);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 10px;
+        }
+        .add-photo-btn:active {
+            background: var(--pink-200);
+        }
+
+        /* Photo Viewer Modal */
+        .photo-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .photo-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        .photo-modal img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 28px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+        .modal-caption {
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .modal-tools {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .modal-tool-btn {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .modal-tool-btn:active {
+            background: var(--pink-500);
+        }
+
+        /* ====== SHAYARI PAGE ====== */
+        .shayari-header {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+        .shayari-header h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 40px;
+            color: var(--pink-500);
+        }
+        .shayari-header p {
+            color: var(--pink-600);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .shayari-categories {
+            display: flex;
+            gap: 8px;
+            padding: 15px 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .shayari-categories::-webkit-scrollbar { display: none; }
+        .cat-pill {
+            flex-shrink: 0;
+            padding: 8px 18px;
+            border-radius: 50px;
+            border: 2px solid var(--pink-300);
+            background: white;
+            color: var(--pink-500);
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            white-space: nowrap;
+        }
+        .cat-pill.active {
+            background: var(--pink-gradient-2);
+            color: white;
+            border-color: transparent;
+        }
+
+        .shayari-list {
+            padding: 10px 20px;
+        }
+        .shayari-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--pink-100);
+            position: relative;
+            overflow: hidden;
+        }
+        .shayari-card::before {
+            content: '❝';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 50px;
+            color: var(--pink-100);
+            font-family: serif;
+            line-height: 1;
+        }
+        .shayari-card .shayari-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            line-height: 2;
+            color: #5a2d4a;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            white-space: pre-line;
+            padding: 10px 0;
+        }
+        .shayari-card .shayari-text.hindi {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        .shayari-card .shayari-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--pink-gradient-3);
+            margin: 12px auto;
+            border-radius: 2px;
+        }
+        .shayari-card .shayari-type {
+            text-align: center;
+            font-size: 12px;
+            color: var(--pink-400);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .shayari-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .shayari-action-btn {
+            background: var(--pink-100);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 13px;
+            color: var(--pink-500);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .shayari-action-btn:active {
+            background: var(--pink-500);
+            color: white;
+        }
+
+        /* ====== CUSTOMIZE (CREATE) PAGE ====== */
+        .create-header {
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+        .create-header h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 40px;
+            color: var(--pink-500);
+        }
+
+        .create-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            margin: 15px 20px;
+            box-shadow: var(--shadow-lg);
+        }
+        .create-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 22px;
+            color: var(--pink-500);
+            margin-bottom: 15px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--pink-600);
+            margin-bottom: 6px;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--pink-200);
+            border-radius: 14px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            color: #4a2040;
+            background: var(--pink-light);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--pink-400);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .frame-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .frame-option {
+            aspect-ratio: 1;
+            border: 3px solid var(--pink-200);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--pink-light);
+        }
+        .frame-option.selected {
+            border-color: var(--pink-500);
+            background: var(--pink-100);
+            box-shadow: var(--shadow-pink);
+        }
+
+        /* Preview Card */
+        .preview-container {
+            margin: 15px 20px;
+            padding: 4px;
+            background: var(--pink-gradient-2);
+            border-radius: 28px;
+            box-shadow: var(--shadow-lg);
+        }
+        .preview-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .preview-image-area {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: var(--pink-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .preview-image-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .preview-image-area .placeholder-text {
+            color: var(--pink-400);
+            font-size: 48px;
+        }
+        .preview-frame-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+        }
+        .preview-text-area {
+            padding: 20px;
+        }
+        .preview-text-area .preview-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 32px;
+            color: var(--pink-500);
+        }
+        .preview-text-area .preview-message {
+            font-size: 14px;
+            color: #6b3a5a;
+            margin-top: 8px;
+            line-height: 1.6;
+        }
+        .preview-text-area .preview-from {
+            font-family: 'Dancing Script', cursive;
+            font-size: 18px;
+            color: var(--pink-400);
+            margin-top: 12px;
+        }
+
+        .generate-btn {
+            display: block;
+            width: calc(100% - 40px);
+            margin: 20px auto;
+            padding: 16px;
+            background: var(--pink-gradient-2);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: var(--shadow-pink);
+            transition: all 0.3s ease;
+        }
+        .generate-btn:active {
+            transform: scale(0.97);
+            opacity: 0.9;
+        }
+
+        /* Download / Share Buttons */
+        .share-row {
+            display: flex;
+            gap: 10px;
+            padding: 0 20px 20px;
+        }
+        .share-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 14px;
+            border: 2px solid var(--pink-300);
+            background: white;
+            color: var(--pink-500);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .share-btn:active {
+            background: var(--pink-500);
+            color: white;
+        }
+        .share-btn.primary {
+            background: var(--pink-gradient-2);
+            color: white;
+            border: none;
+        }
+
+        /* ====== CONFETTI ====== */
+        .confetti-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 3000;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            animation: confettiFall linear forwards;
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotateZ(0) rotateX(0); opacity: 1; }
+            100% { transform: translateY(100vh) rotateZ(720deg) rotateX(360deg); opacity: 0; }
+        }
+
+        /* ====== TOAST ====== */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--pink-gradient-2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: var(--shadow-lg);
+            z-index: 5000;
+            transition: all 0.4s ease;
+            white-space: nowrap;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (min-width: 500px) {
+            .page { max-width: 480px; margin: 0 auto; }
+            .bottom-nav { max-width: 480px; left: 50%; transform: translateX(-50%); border-radius: 20px 20px 0 0; }
+            body { background: var(--pink-200); }
+            .page { background: var(--pink-gradient); }
+        }
+
+        /* Splash Screen */
+        .splash {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--pink-gradient-2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .splash.hide {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+        .splash h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            color: white;
+            margin-top: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .splash .splash-emoji {
+            font-size: 80px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+        .splash p {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        /* Sticker Effects */
+        .sticker-overlay {
+            position: absolute;
+            font-size: 30px;
+            cursor: move;
+            user-select: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Splash Screen -->
+<div class="splash" id="splash">
+    <div class="splash-emoji">🎂</div>
+    <h1>Happy Birthday Ipsita Jii!</h1>
+    <p>Loading your special surprise... 💖</p>
+</div>
+
+<!-- Floating Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- Music Toggle -->
+<div class="music-float" id="musicToggle" onclick="toggleMusic()">
+    🎵
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- ============ HOME PAGE ============ -->
+<div class="page active" id="page-home">
+    <div class="hero">
+        <div class="hero-badge">✨ Special Day ✨</div>
+        <h1>Happy Birthday Ipsita Jii!</h1>
+        <p class="subtitle">Wishing you the most wonderful day filled with love & joy 🌸</p>
+        <div class="cake-container">🎂</div>
+    </div>
+
+    <div class="wish-card">
+        <h2>🎀 A Special Wish For Ipsita Jii 🎀</h2>
+        <p>
+            Dear Ipsita Jii, on this beautiful day, may all your dreams come true and every moment be filled with happiness. 
+            You deserve all the love and joy in the world! May this year bring you closer to everything 
+            you've been wishing for. Stay blessed, stay happy always! 💖
+        </p>
+        <div class="emoji-row">🎈🎁🎊🌹🥳</div>
+    </div>
+
+    <div class="countdown-section">
+        <h3>🕐 Birthday Countdown</h3>
+        <div class="countdown-grid">
+            <div class="countdown-item">
+                <span class="number" id="cd-days">00</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="cd-hours">00</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="cd-mins">00</span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number" id="cd-secs">00</span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="wish-card" style="text-align:center;">
+        <h2>🌟 Fun Birthday Facts 🌟</h2>
+        <p id="birthdayFact" style="font-style:italic;"></p>
+        <br>
+        <button class="shayari-action-btn" onclick="showRandomFact()" style="margin:0 auto;">🎲 New Fact</button>
+    </div>
+</div>
+
+<!-- ============ GALLERY PAGE ============ -->
+<div class="page" id="page-gallery">
+    <div class="gallery-header">
+        <h2>Ipsita Jii's Gallery</h2>
+        <p>Precious moments captured forever 📸</p>
+    </div>
+
+    <div class="photo-grid" id="photoGrid">
+        <div class="photo-card" onclick="openPhoto(0)">
+            <img src="images/photo1.png" alt="Memory 1" id="gallery-img-0">
+            <div class="photo-overlay"><span>Beautiful Moments 💕</span></div>
+            <div class="photo-heart" onclick="event.stopPropagation(); toggleHeart(this)">🤍</div>
+        </div>
+        <div class="photo-card" onclick="openPhoto(1)">
+            <img src="images/photo2.png" alt="Memory 2" id="gallery-img-1">
+            <div class="photo-overlay"><span>Smile Always 😊</span></div>
+            <div class="photo-heart" onclick="event.stopPropagation(); toggleHeart(this)">🤍</div>
+        </div>
+        <div class="photo-card" onclick="openPhoto(2)">
+            <img src="images/photo3.png" alt="Memory 3" id="gallery-img-2">
+            <div class="photo-overlay"><span>Together Forever 🌸</span></div>
+            <div class="photo-heart" onclick="event.stopPropagation(); toggleHeart(this)">🤍</div>
+        </div>
+    </div>
+
+    <!-- Photo Customization -->
+    <div class="customize-section">
+        <h3>✨ Customize Photos ✨</h3>
+        
+        <p style="font-size:12px; color:var(--pink-400); text-align:center; margin-bottom:10px;">Tap a photo above, then apply filters</p>
+        
+        <div class="filter-grid">
+            <button class="filter-btn active" onclick="applyFilter('none', this)">Original</button>
+            <button class="filter-btn" onclick="applyFilter('grayscale(100%)', this)">B&W</button>
+            <button class="filter-btn" onclick="applyFilter('sepia(100%)', this)">Sepia</button>
+            <button class="filter-btn" onclick="applyFilter('saturate(2)', this)">Vivid</button>
+            <button class="filter-btn" onclick="applyFilter('contrast(1.5)', this)">Contrast</button>
+            <button class="filter-btn" onclick="applyFilter('hue-rotate(90deg)', this)">Cool</button>
+            <button class="filter-btn" onclick="applyFilter('brightness(1.3)', this)">Bright</button>
+            <button class="filter-btn" onclick="applyFilter('blur(2px)', this)">Blur</button>
+        </div>
+
+        <div class="slider-group">
+            <label>Brightness <span id="brightnessVal">100%</span></label>
+            <input type="range" min="50" max="200" value="100" id="brightnessSlider" oninput="adjustImage()">
+        </div>
+        <div class="slider-group">
+            <label>Contrast <span id="contrastVal">100%</span></label>
+            <input type="range" min="50" max="200" value="100" id="contrastSlider" oninput="adjustImage()">
+        </div>
+        <div class="slider-group">
+            <label>Saturation <span id="saturationVal">100%</span></label>
+            <input type="range" min="0" max="300" value="100" id="saturationSlider" oninput="adjustImage()">
+        </div>
+
+        <button class="add-photo-btn" onclick="document.getElementById('addPhotoInput').click()">
+            📷 Add New Photo
+        </button>
+        <input type="file" id="addPhotoInput" accept="image/*" style="display:none" onchange="addNewPhoto(event)">
+    </div>
+</div>
+
+<!-- Photo Modal -->
+<div class="photo-modal" id="photoModal">
+    <button class="modal-close" onclick="closePhoto()">✕</button>
+    <img id="modalImage" src="" alt="Full view">
+    <div class="modal-caption" id="modalCaption"></div>
+    <div class="modal-tools">
+        <button class="modal-tool-btn" onclick="downloadPhoto()">💾 Save</button>
+        <button class="modal-tool-btn" onclick="sharePhoto()">📤 Share</button>
+        <button class="modal-tool-btn" onclick="addSticker()">⭐ Sticker</button>
+    </div>
+</div>
+
+<!-- ============ SHAYARI PAGE ============ -->
+<div class="page" id="page-shayari">
+    <div class="shayari-header">
+        <h2>Shayari</h2>
+        <p>Heartfelt words for Ipsita Jii 💝</p>
+    </div>
+
+    <div class="shayari-categories" id="shayariCategories">
+        <div class="cat-pill active" onclick="filterShayari('all', this)">🌸 All</div>
+        <div class="cat-pill" onclick="filterShayari('birthday', this)">🎂 Birthday</div>
+        <div class="cat-pill" onclick="filterShayari('dosti', this)">🤝 Dosti</div>
+        <div class="cat-pill" onclick="filterShayari('love', this)">❤️ Pyar</div>
+        <div class="cat-pill" onclick="filterShayari('motivational', this)">💪 Motivational</div>
+        <div class="cat-pill" onclick="filterShayari('funny', this)">😂 Funny</div>
+    </div>
+
+    <div class="shayari-list" id="shayariList">
+        <!-- Rendered by JS -->
+    </div>
+</div>
+
+<!-- ============ CREATE PAGE ============ -->
+<div class="page" id="page-create">
+    <div class="create-header">
+        <h2>Create Wish Card</h2>
+    </div>
+
+    <div class="create-card">
+        <h3>📝 Personalize Your Wish</h3>
+        <div class="form-group">
+            <label>Birthday Person's Name</label>
+            <input type="text" id="wishName" placeholder="Enter name..." value="Ipsita Jii" oninput="updatePreview()">
+        </div>
+        <div class="form-group">
+            <label>Your Message</label>
+            <textarea id="wishMessage" placeholder="Write your birthday wish..." oninput="updatePreview()"></textarea>
+        </div>
+        <div class="form-group">
+            <label>From</label>
+            <input type="text" id="wishFrom" placeholder="Your name..." oninput="updatePreview()">
+        </div>
+        <div class="form-group">
+            <label>Choose Photo</label>
+            <button class="add-photo-btn" onclick="document.getElementById('wishPhotoInput').click()">
+                📷 Select Photo
+            </button>
+            <input type="file" id="wishPhotoInput" accept="image/*" style="display:none" onchange="setWishPhoto(event)">
+        </div>
+        <div class="form-group">
+            <label>Choose Frame</label>
+            <div class="frame-selector">
+                <div class="frame-option selected" onclick="selectFrame('hearts', this)">💕</div>
+                <div class="frame-option" onclick="selectFrame('stars', this)">⭐</div>
+                <div class="frame-option" onclick="selectFrame('flowers', this)">🌸</div>
+                <div class="frame-option" onclick="selectFrame('balloons', this)">🎈</div>
+                <div class="frame-option" onclick="selectFrame('cake', this)">🎂</div>
+                <div class="frame-option" onclick="selectFrame('ribbon', this)">🎀</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Preview -->
+    <div class="preview-container">
+        <div class="preview-card" id="previewCard">
+            <div class="preview-image-area" id="previewImageArea">
+                <span class="placeholder-text">📷</span>
+                <div class="preview-frame-overlay" id="frameOverlay"></div>
+            </div>
+            <div class="preview-text-area">
+                <div class="preview-name" id="previewName">Ipsita Jii</div>
+                <div class="preview-message" id="previewMessage">Your personalized message will appear here...</div>
+                <div class="preview-from" id="previewFrom">— With love</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="share-row">
+        <button class="share-btn" onclick="downloadCard()">💾 Download</button>
+        <button class="share-btn primary" onclick="shareCard()">📤 Share</button>
+    </div>
+</div>
+
+<!-- ============ BOTTOM NAVIGATION ============ -->
+<nav class="bottom-nav">
+    <div class="nav-item active" onclick="switchPage('home', this)">
+        <span class="nav-icon">🏠</span>
+        <span>Home</span>
+    </div>
+    <div class="nav-item" onclick="switchPage('gallery', this)">
+        <span class="nav-icon">📸</span>
+        <span>Gallery</span>
+    </div>
+    <div class="nav-item" onclick="switchPage('shayari', this)">
+        <span class="nav-icon">📜</span>
+        <span>Shayari</span>
+    </div>
+    <div class="nav-item" onclick="switchPage('create', this)">
+        <span class="nav-icon">✨</span>
+        <span>Create</span>
+    </div>
+</nav>
+
+<!-- Confetti container -->
+<div class="confetti-container" id="confettiContainer"></div>
+
+<script>
+// ====== SHAYARI DATA ======
+const shayariData = [
+    {
+        category: 'birthday',
+        text: `जन्मदिन की बहुत बहुत बधाई,
+खुदा करे आपकी हर ख्वाहिश पूरी हो जाए,
+ज़िन्दगी में कभी ग़म का साया न आए,
+हर दिन आपका जन्मदिन की तरह मनाए। 🎂`,
+        type: 'Birthday Special'
+    },
+    {
+        category: 'birthday',
+        text: `फूलों ने अमृत का जाम भेजा है,
+सूरज ने गर्मी से सलाम भेजा है,
+मुबारक हो आपको जन्मदिन,
+ये पैगाम हमने दिल से भेजा है! 🌹`,
+        type: 'Birthday Wish'
+    },
+    {
+        category: 'birthday',
+        text: `चाँद ने अपनी चाँदनी भेजी है,
+तारों ने अपनी रौशनी भेजी है,
+हम तो कुछ दे न पाए आपको,
+मगर दिल से दुआ भेजी है,
+जन्मदिन मुबारक हो! ✨`,
+        type: 'Dua Special'
+    },
+    {
+        category: 'birthday',
+        text: `तुम जियो हजारों साल,
+ये मेरी है आरज़ू,
+हर साल में हो दिन पचास हजार,
+ये मेरी है आरज़ू,
+Happy Birthday Dear! 🎈`,
+        type: 'Classic Wish'
+    },
+    {
+        category: 'dosti',
+        text: `दोस्ती वो नहीं जो एक दिन में बन जाए,
+दोस्ती वो है जो एक उम्र तक निभा जाए,
+लोग कहते हैं दोस्ती टूट जाती है,
+पर हमारी दोस्ती तो मरकर भी याद आए! 🤝`,
+        type: 'Dosti Forever'
+    },
+    {
+        category: 'dosti',
+        text: `कुछ रिश्ते खून के होते हैं,
+कुछ रिश्ते दुआओं के होते हैं,
+मगर सबसे प्यारे रिश्ते,
+दोस्ती के होते हैं! 💛`,
+        type: 'Friendship'
+    },
+    {
+        category: 'dosti',
+        text: `दोस्ती में कोई शर्त नहीं होती,
+दोस्ती में कोई मतलब नहीं होता,
+बस दिल से दिल का रिश्ता होता है,
+इसलिए दोस्ती सबसे हसीन होती है! 🌟`,
+        type: 'True Friendship'
+    },
+    {
+        category: 'love',
+        text: `तुम्हारी मुस्कान में जन्नत है,
+तुम्हारी आँखों में कयामत है,
+तुम्हें देखकर दिल कहता है,
+बस यही मेरी किस्मत है! 💖`,
+        type: 'Pyar Ki Shayari'
+    },
+    {
+        category: 'love',
+        text: `दिल ने कहा चुपके से,
+ये जन्मदिन है सबसे खास,
+तुमसे बेहतर कोई नहीं,
+तुम ही हो मेरे दिल के पास! 💕`,
+        type: 'Birthday + Love'
+    },
+    {
+        category: 'love',
+        text: `हर सुबह तेरे नाम की धूप खिले,
+हर शाम तेरे नाम के दीप जले,
+जन्मदिन मुबारक हो जानेमन,
+तेरी हर ख्वाहिश तेरे कदमों तले! 🌹`,
+        type: 'Romantic Birthday'
+    },
+    {
+        category: 'motivational',
+        text: `ज़िन्दगी में कुछ बड़ा करना है,
+तो हौसले रखो बुलंद,
+हर मंज़िल तुम्हारी है,
+बस चलते रहो बिना रुके! 💪`,
+        type: 'Motivational'
+    },
+    {
+        category: 'motivational',
+        text: `उम्र तो सिर्फ एक नंबर है,
+जवानी तो जज़्बे में है,
+जन्मदिन की बधाई हो,
+कामयाबी तो आपके कदमों में है! 🏆`,
+        type: 'Birthday Motivation'
+    },
+    {
+        category: 'motivational',
+        text: `सपने वो नहीं जो नींद में दिखें,
+सपने वो हैं जो नींद ही न आने दें,
+जन्मदिन पर यही दुआ है,
+हर सपना तुम्हारा सच हो जाए! ⭐`,
+        type: 'Dream Big'
+    },
+    {
+        category: 'funny',
+        text: `एक और साल बीत गया भाई,
+बुढ़ापा आ रहा है तेज हवाई,
+पर टेंशन मत ले यारा,
+अभी तो बहुत केक खाना बाकी है! 😂`,
+        type: 'Funny Birthday'
+    },
+    {
+        category: 'funny',
+        text: `जन्मदिन की बधाई दोस्त,
+एक साल और बूढ़े हो गए,
+पर चिंता मत करो,
+केक से पेट तो भर गया! 🎂😄`,
+        type: 'Comedy Special'
+    },
+    {
+        category: 'funny',
+        text: `आज तेरा Birthday है,
+पार्टी का इंतज़ाम कहाँ है?
+केक, समोसे, गुलाब जामुन,
+बस बजट की चिंता तुझे है! 🍰😜`,
+        type: 'Party Wala'
+    },
+    {
+        category: 'birthday',
+        text: `ये दिन है बहुत खास,
+तुम्हारे जन्म का दिन है,
+खुशियों से भर जाए ज़िन्दगी,
+हर पल तुम्हारा अपना दिन है! 🎉`,
+        type: 'Special Day'
+    },
+    {
+        category: 'love',
+        text: `तेरे बिना ये जन्मदिन अधूरा है,
+तू है तो हर रंग पूरा है,
+दिल से निकलती है ये दुआ,
+तू मेरे लिए किसी दुआ से ज़रूरा है! 💝`,
+        type: 'Love Birthday'
+    }
+];
+
+// ====== BIRTHDAY FACTS ======
+const birthdayFacts = [
+    "🎂 The tradition of birthday cakes dates back to ancient Greece!",
+    "🎈 About 2 billion birthday cards are sent each year in the US alone!",
+    "🎵 'Happy Birthday to You' is one of the most recognized songs in the world!",
+    "🌟 Statistically, the most common birthday month is September!",
+    "🎁 In ancient Rome, birthdays were celebrated only for men!",
+    "🕯️ Germans invented the modern birthday cake with candles in the 18th century!",
+    "🎉 In Mexico, birthday celebrations include breaking a piñata!",
+    "🍰 The world's largest birthday cake weighed over 128,000 pounds!",
+    "✨ In some cultures, pulling earlobes is a birthday tradition!",
+    "🎊 Shakespeare was born and died on the same date — April 23rd!"
+];
+
+// ====== STATE ======
+let currentPage = 'home';
+let selectedPhotoIndex = 0;
+let currentFilter = 'none';
+let selectedFrame = 'hearts';
+let isMusicPlaying = false;
+let photoSources = ['images/photo1.png', 'images/photo2.png', 'images/photo3.png'];
+const captions = ['Beautiful Moments 💕', 'Smile Always 😊', 'Together Forever 🌸'];
+
+// ====== SPLASH ======
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('splash').classList.add('hide');
+        launchConfetti();
+    }, 2000);
+    createParticles();
+    renderShayari('all');
+    showRandomFact();
+    startCountdown();
+});
+
+// ====== NAVIGATION ======
+function switchPage(page, el) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + page).classList.add('active');
+    el.classList.add('active');
+    currentPage = page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ====== PARTICLES ======
+function createParticles() {
+    const container = document.getElementById('particles');
+    const emojis = ['🌸', '💖', '✨', '🎀', '🌹', '💕', '🦋', '🎂', '🎈', '🎁', '⭐', '💗'];
+    for (let i = 0; i < 25; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        p.style.left = Math.random() * 100 + '%';
+        p.style.fontSize = (15 + Math.random() * 20) + 'px';
+        p.style.animationDuration = (8 + Math.random() * 12) + 's';
+        p.style.animationDelay = Math.random() * 15 + 's';
+        container.appendChild(p);
+    }
+}
+
+// ====== CONFETTI ======
+function launchConfetti() {
+    const container = document.getElementById('confettiContainer');
+    const colors = ['#ff69b4', '#ff1493', '#ff9ebb', '#ffd700', '#ff6b9d', '#c471ed', '#f64f59', '#ff9a9e'];
+    for (let i = 0; i < 80; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.width = (6 + Math.random() * 8) + 'px';
+        piece.style.height = (6 + Math.random() * 8) + 'px';
+        piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        piece.style.animationDuration = (2 + Math.random() * 3) + 's';
+        piece.style.animationDelay = Math.random() * 2 + 's';
+        container.appendChild(piece);
+    }
+    setTimeout(() => container.innerHTML = '', 6000);
+}
+
+// ====== MUSIC ======
+function toggleMusic() {
+    const btn = document.getElementById('musicToggle');
+    isMusicPlaying = !isMusicPlaying;
+    btn.classList.toggle('playing', isMusicPlaying);
+    btn.textContent = isMusicPlaying ? '🎶' : '🎵';
+    showToast(isMusicPlaying ? '🎶 Music On!' : '🔇 Music Off');
+}
+
+// ====== COUNTDOWN ======
+function startCountdown() {
+    // Set next birthday (customize this date)
+    const now = new Date();
+    let birthday = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1); // next day as demo
+    
+    function update() {
+        const now = new Date();
+        const diff = birthday - now;
+        if (diff <= 0) {
+            document.getElementById('cd-days').textContent = '🎉';
+            document.getElementById('cd-hours').textContent = '🎂';
+            document.getElementById('cd-mins').textContent = '🥳';
+            document.getElementById('cd-secs').textContent = '💖';
+            return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+        document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+        document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+    }
+    update();
+    setInterval(update, 1000);
+}
+
+// ====== BIRTHDAY FACTS ======
+function showRandomFact() {
+    const el = document.getElementById('birthdayFact');
+    el.style.opacity = 0;
+    setTimeout(() => {
+        el.textContent = birthdayFacts[Math.floor(Math.random() * birthdayFacts.length)];
+        el.style.opacity = 1;
+        el.style.transition = 'opacity 0.5s ease';
+    }, 300);
+}
+
+// ====== GALLERY ======
+function openPhoto(index) {
+    selectedPhotoIndex = index;
+    const modal = document.getElementById('photoModal');
+    document.getElementById('modalImage').src = photoSources[index];
+    document.getElementById('modalCaption').textContent = captions[index] || 'Beautiful Memory 💖';
+    modal.classList.add('active');
+}
+
+function closePhoto() {
+    document.getElementById('photoModal').classList.remove('active');
+}
+
+function toggleHeart(el) {
+    el.classList.toggle('liked');
+    el.textContent = el.classList.contains('liked') ? '❤️' : '🤍';
+    if (el.classList.contains('liked')) {
+        showToast('💖 Loved!');
+        launchConfetti();
+    }
+}
+
+function applyFilter(filter, btn) {
+    currentFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    // Apply to all gallery images
+    document.querySelectorAll('.photo-card img').forEach(img => {
+        img.style.filter = filter;
+    });
+    showToast('✨ Filter applied!');
+}
+
+function adjustImage() {
+    const brightness = document.getElementById('brightnessSlider').value;
+    const contrast = document.getElementById('contrastSlider').value;
+    const saturation = document.getElementById('saturationSlider').value;
+    
+    document.getElementById('brightnessVal').textContent = brightness + '%';
+    document.getElementById('contrastVal').textContent = contrast + '%';
+    document.getElementById('saturationVal').textContent = saturation + '%';
+    
+    const filterStr = `brightness(${brightness/100}) contrast(${contrast/100}) saturate(${saturation/100})`;
+    document.querySelectorAll('.photo-card img').forEach(img => {
+        img.style.filter = filterStr;
+    });
+}
+
+function addNewPhoto(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const index = photoSources.length;
+        photoSources.push(e.target.result);
+        captions.push('New Memory 🌸');
+        
+        const grid = document.getElementById('photoGrid');
+        const card = document.createElement('div');
+        card.className = 'photo-card';
+        card.onclick = () => openPhoto(index);
+        card.innerHTML = `
+            <img src="${e.target.result}" alt="Memory ${index + 1}" id="gallery-img-${index}">
+            <div class="photo-overlay"><span>New Memory 🌸</span></div>
+            <div class="photo-heart" onclick="event.stopPropagation(); toggleHeart(this)">🤍</div>
+        `;
+        grid.appendChild(card);
+        showToast('📷 Photo added!');
+        launchConfetti();
+    };
+    reader.readAsDataURL(file);
+    event.target.value = '';
+}
+
+function downloadPhoto() {
+    const img = document.getElementById('modalImage');
+    const link = document.createElement('a');
+    link.href = img.src;
+    link.download = 'birthday_photo.png';
+    link.click();
+    showToast('💾 Photo saved!');
+}
+
+function sharePhoto() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Happy Birthday! 🎂',
+            text: 'Check out this beautiful birthday memory! 💖',
+        });
+    } else {
+        showToast('📋 Link copied!');
+    }
+}
+
+function addSticker() {
+    const stickers = ['⭐', '💖', '🌟', '🎀', '🦋', '✨', '🌸', '🎂', '🥳', '💕'];
+    showToast(stickers[Math.floor(Math.random() * stickers.length)] + ' Sticker added!');
+}
+
+// ====== SHAYARI ======
+function renderShayari(category) {
+    const list = document.getElementById('shayariList');
+    const filtered = category === 'all' ? shayariData : shayariData.filter(s => s.category === category);
+    
+    list.innerHTML = filtered.map((s, i) => `
+        <div class="shayari-card" style="animation-delay: ${i * 0.1}s">
+            <div class="shayari-text hindi">${s.text}</div>
+            <div class="shayari-divider"></div>
+            <div class="shayari-type">${s.type}</div>
+            <div class="shayari-actions">
+                <button class="shayari-action-btn" onclick="copyShayari(${i}, '${category}')">📋 Copy</button>
+                <button class="shayari-action-btn" onclick="shareShayari(${i}, '${category}')">📤 Share</button>
+                <button class="shayari-action-btn" onclick="likeShayari(this)">🤍 Like</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function filterShayari(category, el) {
+    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    renderShayari(category);
+}
+
+function copyShayari(index, category) {
+    const filtered = category === 'all' ? shayariData : shayariData.filter(s => s.category === category);
+    const text = filtered[index].text.replace(/\n/g, '\n');
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('📋 Shayari copied!');
+    }).catch(() => {
+        showToast('📋 Copied!');
+    });
+}
+
+function shareShayari(index, category) {
+    const filtered = category === 'all' ? shayariData : shayariData.filter(s => s.category === category);
+    const text = filtered[index].text;
+    if (navigator.share) {
+        navigator.share({
+            title: '🎂 Birthday Shayari',
+            text: text + '\n\n— Birthday Wishes App 💖',
+        });
+    } else {
+        navigator.clipboard.writeText(text);
+        showToast('📋 Copied to share!');
+    }
+}
+
+function likeShayari(btn) {
+    const isLiked = btn.textContent.includes('❤️');
+    btn.textContent = isLiked ? '🤍 Like' : '❤️ Liked';
+    if (!isLiked) showToast('💖 Shayari liked!');
+}
+
+// ====== CREATE CARD ======
+function updatePreview() {
+    const name = document.getElementById('wishName').value || 'Happy Birthday!';
+    const message = document.getElementById('wishMessage').value || 'Your personalized message will appear here...';
+    const from = document.getElementById('wishFrom').value || 'With love';
+    
+    document.getElementById('previewName').textContent = name;
+    document.getElementById('previewMessage').textContent = message;
+    document.getElementById('previewFrom').textContent = '— ' + from;
+}
+
+function setWishPhoto(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const area = document.getElementById('previewImageArea');
+        area.innerHTML = `<img src="${e.target.result}" alt="Wish Photo"><div class="preview-frame-overlay" id="frameOverlay"></div>`;
+        updateFrameOverlay();
+        showToast('📷 Photo added to card!');
+    };
+    reader.readAsDataURL(file);
+}
+
+function selectFrame(frame, el) {
+    selectedFrame = frame;
+    document.querySelectorAll('.frame-option').forEach(f => f.classList.remove('selected'));
+    el.classList.add('selected');
+    updateFrameOverlay();
+}
+
+function updateFrameOverlay() {
+    const overlay = document.getElementById('frameOverlay');
+    if (!overlay) return;
+    
+    const frames = {
+        hearts: '💕',
+        stars: '⭐',
+        flowers: '🌸',
+        balloons: '🎈',
+        cake: '🎂',
+        ribbon: '🎀'
+    };
+    
+    const emoji = frames[selectedFrame];
+    let html = '';
+    // Corner decorations
+    const positions = [
+        'top:5px;left:5px', 'top:5px;right:5px',
+        'bottom:5px;left:5px', 'bottom:5px;right:5px',
+        'top:5px;left:50%;transform:translateX(-50%)',
+        'bottom:5px;left:50%;transform:translateX(-50%)',
+        'top:50%;left:5px;transform:translateY(-50%)',
+        'top:50%;right:5px;transform:translateY(-50%)'
+    ];
+    positions.forEach(pos => {
+        html += `<span style="position:absolute;${pos};font-size:24px;">${emoji}</span>`;
+    });
+    overlay.innerHTML = html;
+}
+
+function downloadCard() {
+    showToast('💾 Card saved! (Use screenshot for best quality)');
+    launchConfetti();
+}
+
+function shareCard() {
+    const name = document.getElementById('wishName').value || 'Friend';
+    if (navigator.share) {
+        navigator.share({
+            title: `🎂 Happy Birthday ${name}!`,
+            text: document.getElementById('wishMessage').value || 'Happy Birthday! 🎉💖',
+        });
+    } else {
+        showToast('📤 Share link ready!');
+    }
+}
+
+// ====== TOAST ======
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+}
+
+// ====== SWIPE GESTURES ======
+let touchStartX = 0;
+document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+    const diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) < 80) return;
+    
+    const pages = ['home', 'gallery', 'shayari', 'create'];
+    const currentIndex = pages.indexOf(currentPage);
+    
+    if (diff > 0 && currentIndex > 0) {
+        // Swipe right - previous page
+        const nav = document.querySelectorAll('.nav-item');
+        switchPage(pages[currentIndex - 1], nav[currentIndex - 1]);
+    } else if (diff < 0 && currentIndex < pages.length - 1) {
+        // Swipe left - next page
+        const nav = document.querySelectorAll('.nav-item');
+        switchPage(pages[currentIndex + 1], nav[currentIndex + 1]);
+    }
+});
+
+// Close modal on back button
+window.addEventListener('popstate', () => {
+    closePhoto();
+});
+
+// Initial frame overlay
+updateFrameOverlay();
+</script>
+
+</body>
+</html>
