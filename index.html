@@ -954,7 +954,7 @@
     </div>
 
     <div class="countdown-section">
-        <h3>🕐 Birthday Countdown</h3>
+        <h3>🕐 Birthday Countdown (IST 🇮🇳)</h3>
         <div class="countdown-grid">
             <div class="countdown-item">
                 <span class="number" id="cd-days">00</span>
@@ -976,7 +976,7 @@
     </div>
 
     <div class="wish-card" style="text-align:center;">
-        <h2>🌟 Fun Birthday Facts 🌟</h2>
+        <h2>🇮🇳 Desi Birthday Facts 🌟</h2>
         <p id="birthdayFact" style="font-style:italic;"></p>
         <br>
         <button class="shayari-action-btn" onclick="showRandomFact()" style="margin:0 auto;">🎲 New Fact</button>
@@ -1315,16 +1315,21 @@ Happy Birthday Dear! 🎈`,
 
 // ====== BIRTHDAY FACTS ======
 const birthdayFacts = [
-    "🎂 The tradition of birthday cakes dates back to ancient Greece!",
-    "🎈 About 2 billion birthday cards are sent each year in the US alone!",
-    "🎵 'Happy Birthday to You' is one of the most recognized songs in the world!",
-    "🌟 Statistically, the most common birthday month is September!",
-    "🎁 In ancient Rome, birthdays were celebrated only for men!",
-    "🕯️ Germans invented the modern birthday cake with candles in the 18th century!",
-    "🎉 In Mexico, birthday celebrations include breaking a piñata!",
-    "🍰 The world's largest birthday cake weighed over 128,000 pounds!",
-    "✨ In some cultures, pulling earlobes is a birthday tradition!",
-    "🎊 Shakespeare was born and died on the same date — April 23rd!"
+    "🎂 भारत में हर दिन लगभग 70,000+ बच्चों का जन्म होता है — दुनिया में सबसे ज़्यादा!",
+    "🪔 भारत में जन्मदिन पर मंदिर जाकर आशीर्वाद लेने की पुरानी परंपरा है!",
+    "🌸 भारत में जन्मदिन पर पैर छूकर बड़ों का आशीर्वाद लेना शुभ माना जाता है!",
+    "🍰 India is the world's largest consumer of birthday cakes after China!",
+    "🎵 'Baar Baar Din Yeh Aaye' is India's most iconic birthday song from the movie Farz (1967)!",
+    "🌟 भारत में जन्मदिन पर नए कपड़े पहनना शुभ माना जाता है!",
+    "🎁 In India, it's tradition for the birthday person to distribute sweets & chocolates!",
+    "🪷 हिन्दू परंपरा में जन्मदिन को 'जन्म दिवस' या 'जयंती' कहते हैं!",
+    "🇮🇳 भारत का सबसे बड़ा जन्मदिन celebration — गांधी जयंती, पूरे देश में मनाई जाती है!",
+    "✨ In South India, birthdays often start with an oil bath (तेल स्नान) for good luck!",
+    "🍛 भारत में जन्मदिन पर खीर, पूरी और हलवा बनाने की परंपरा है!",
+    "🎈 Bollywood ने जन्मदिन के गानों को legendary बना दिया — 'Happy Birthday to You' से भी ज़्यादा popular!",
+    "🕉️ कुछ भारतीय परिवारों में जन्मदिन पर हवन और पूजा करवाई जाती है!",
+    "🌺 केरल में जन्मदिन पर 'Vishu Kani' जैसे फूलों से सजावट की जाती है!",
+    "🎊 भारत में 1st birthday को 'अन्नप्राशन' (first rice ceremony) के साथ मनाते हैं!"
 ];
 
 // ====== STATE ======
@@ -1404,13 +1409,29 @@ function toggleMusic() {
 
 // ====== COUNTDOWN ======
 function startCountdown() {
-    // Set next birthday (customize this date)
-    const now = new Date();
-    let birthday = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1); // next day as demo
-    
-    function update() {
+    // Helper: get current time in IST (UTC+5:30)
+    function getIST() {
         const now = new Date();
-        const diff = birthday - now;
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        return new Date(utc + 5.5 * 3600000);
+    }
+
+    // Set Ipsita Jii's next birthday in IST (Oct 20 midnight IST as demo)
+    // Change month (0-indexed) and day below for actual birthday
+    function getNextBirthday() {
+        const ist = getIST();
+        let bday = new Date(ist.getFullYear(), 9, 20, 0, 0, 0); // Oct 20 (month 9 = Oct)
+        if (ist >= bday) {
+            bday = new Date(ist.getFullYear() + 1, 9, 20, 0, 0, 0);
+        }
+        return bday;
+    }
+
+    const birthday = getNextBirthday();
+
+    function update() {
+        const ist = getIST();
+        const diff = birthday - ist;
         if (diff <= 0) {
             document.getElementById('cd-days').textContent = '🎉';
             document.getElementById('cd-hours').textContent = '🎂';
