@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -917,10 +920,11 @@
 <body>
 
 <!-- Splash Screen -->
-<div class="splash" id="splash">
+<div class="splash" id="splash" onclick="dismissSplash()" style="cursor:pointer;">
     <div class="splash-emoji">🎂</div>
     <h1>Happy Birthday Ipsita Jii!</h1>
     <p>Loading your special surprise... 💖</p>
+    <p style="font-size:12px; opacity:0.8; margin-top:16px;">(Tap anywhere to open ✨)</p>
 </div>
 
 <!-- Floating Particles -->
@@ -1342,16 +1346,33 @@ let isMusicPlaying = false;
 let photoSources = ['images/photo1.png', 'images/photo2.png', 'images/photo3.png'];
 const captions = ['Beautiful Moments 💕', 'Smile Always 😊', 'Together Forever 🌸'];
 
-// ====== SPLASH ======
-window.addEventListener('load', () => {
+// ====== SPLASH & INIT ======
+function dismissSplash() {
+    const splash = document.getElementById('splash');
+    if (!splash || splash.classList.contains('hide')) return;
+    splash.classList.add('hide');
     setTimeout(() => {
-        document.getElementById('splash').classList.add('hide');
-        launchConfetti();
-    }, 2000);
+        splash.style.display = 'none';
+    }, 800);
+    launchConfetti();
+}
+
+function initApp() {
     createParticles();
     renderShayari('all');
     showRandomFact();
     startCountdown();
+    // Dismiss splash automatically within 1.2s on mobile/desktop
+    setTimeout(dismissSplash, 1200);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initApp);
+} else {
+    initApp();
+}
+window.addEventListener('load', () => {
+    setTimeout(dismissSplash, 400);
 });
 
 // ====== NAVIGATION ======
@@ -1403,7 +1424,6 @@ function launchConfetti() {
 let audioCtx = null;
 let musicInterval = null;
 let musicTimeoutIds = [];
-let isMusicPlaying = false;
 
 const NOTES = {
     G3: 196.00, A3: 220.00, B3: 246.94,
